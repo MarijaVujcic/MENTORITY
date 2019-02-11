@@ -1,0 +1,18 @@
+{% extends 'nakonprijave/welcome.html.twig' %}
+{% block title %}MENTORITY!{% endblock %}
+
+{% block body %}
+<form method="post">
+  <div class="container">
+    <h3> {{p.ime}} </h3>
+    <hr>
+    <h5>Kod kolegija: {{p.kod}} </h5>
+    <h5>Broj bodova: {{p.bodovi}} </h5>
+
+    <h5>Semestar za redovne: {{p.semRedovni}} </h5>
+    <h5>Semestar za izvanredne: {{p.semIzvanredni}} </h5>
+      <h5> Izborni: {{p.izborni}} </h5>
+    <h6>Program:</h6><p> {{p.program}} </p>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'nakonprijave/welcome.html.twig' %}
+{% block title %}MENTORITY!{% endblock %}
+
+{% block body %}
+
+<form method="post">
+  <div class="container">
+    <p class="text-success">{{s}}</p>
+    <a href="/dodajpredmet">Dodaj novi predmet</a>
+    <ul>
+         {% for p in predmeti %}
+         <li>{{ p.ime }} <a href="/edit{{p.id}}">Promjeni</a> <a href="/opis{{p.id}}">Opis</a><a href="/obrisi{{p.id}}">Obriši</a></li>
+         {% endfor %}
+     </ul>
+      </div>
+</form>
+{% endblock %}

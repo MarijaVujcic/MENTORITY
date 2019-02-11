@@ -1,0 +1,94 @@
+{% extends 'nakonprijave/welcome.html.twig' %}
+{% block title %}MENTORITY!{% endblock %}
+
+{% block body %}
+
+  <div class="container">
+  <h2>Upisni list studenta {{st}}: </h2>
+  <hr>
+  <div  style="width:50%;float:left;border:1px solid black">
+    <fieldset style="margin-left:5px; padding-top: 0.35em;">
+
+    {% for p in predmeti %}
+      {% set br = 0 %}
+      {% for u in up %}
+
+      {% if (p.id == u.predmet.id)  %}
+             {% set br = 1 %}
+      {% endif %}
+      {% endfor %}
+        {% if br == 0 %}
+        <form action="/student{{id}}" method="post">
+      <h6 ><input type="hidden" name='pred' value='{{p.ime}}'/> {{ p.ime }}</h6><input type="submit" name='{{p.ime}}'class="btn btn-warning disabled" value="Upiši"/>
+      </form>
+        <hr>
+      {% endif %}
+
+    {% endfor %}
+  </fieldset>
+  </div>
+{#---------------------------------------------------------------------------------------------------------- #}
+
+  <div style="float:right;border:1px solid black;width:50%">
+    <h1> Predmeti  :</h1>
+    <fieldset style="margin-left:5px; padding-top: 0.35em;">
+    {% for j in 1..10 %}
+      <h5> Semestar{{j}} :</h5>
+      {% for u in up %}
+        {% for p in predmeti %}
+          {% if (p.id == u.predmet.id)  %}
+
+            {% if ( p.semRedovni  == j) and (status == 'semRedovni')%}
+
+                       <p>  {{ p.ime }}
+                       {% if u.status != 'passed' %}
+                          <form action="/student{{u.student.id}}" method="post">
+                            <input type="hidden" name='polozi' value='{{u.idStatus}}'/>
+                            <input class="btn btn-primary disabled" type="submit" style="height:10%" value="Položeno"/>
+                          </form>
+                          <form action="/student{{u.student.id}}" method="post">
+                            <input type="hidden" name='ispisi' value='{{u.idStatus}}'/>
+                            <input class="btn btn-primary disabled"  type="submit" style="height:10%" value="Ispiši"/>
+                          </form>
+
+                       {% endif %}
+                       {% if  u.status == 'passed'%}
+                         <span class="badge badge-success" style="float:right">Predmet je položen!</span>
+                       {% endif %}
+                     </p>
+
+
+            {% endif %}
+
+         {% if ( p.semIzvanredni  == j) and ( status == 'semIzvanredni' )%}
+
+
+                                  <p>  {{ p.ime }}
+                                  {% if u.status != 'passed' %}
+                                     <form action="/student{{u.student.id}}" method="post">
+                                       <input type="hidden" name='polozi' value='{{u.idStatus}}'/>
+                                       <input class="btn btn-primary disabled" type="submit" style="height:10%" value="Položeno"/>
+                                     </form>
+                                     <form action="/student{{u.student.id}}" method="post">
+                                       <input type="hidden" name='ispisi' value='{{u.idStatus}}'/>
+                                       <input class="btn btn-primary disabled"  type="submit" style="height:10%" value="Ispiši"/>
+                                     </form>
+
+                                  {% endif %}
+                                  {% if  u.status == 'passed'%}
+                                    <span class="badge badge-success" style="float:right">Predmet je položen!</span>
+                                  {% endif %}
+                                </p>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+    {% endfor %}
+  <hr>
+  {% endfor %}
+  </fieldset>
+  </div>
+  </div>
+
+
+{% endblock %}

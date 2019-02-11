@@ -1,0 +1,18 @@
+{% extends 'nakonprijave/welcome.html.twig' %}
+{% block title %}MENTORITY!{% endblock %}
+
+{% block body %}
+<form method="post">
+  <div class="container">
+    <ul>
+         {% for s in studenti %}
+         <form action="/student{{s.id}}" method="post">
+         <li>{{ s.email }}</li>
+         <input type="submit" class="btn btn-warning disabled" value="Vidi upisni list"/>
+         </form>
+         {% endfor %}
+
+     </ul>
+      </div>
+</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'registration/reg2.html.twig' %}
+
+{% block title %}Registracija{% endblock %}
+
+{% block body %}
+
+
+    {{ form_start(registrationForm) }}
+
+    <hr>
+    <div class="container">
+        <h1>Registriraj se</h1>
+      <p>Molimo vas da ispunite polja kako bi napravili račun.</p>
+        {{ form_row(registrationForm.email) }}
+
+        {{ form_row(registrationForm.Lozinka.first) }}
+        {{ form_row(registrationForm.Lozinka.second) }}
+        <br>
+        {{form_widget(registrationForm.Status)}}
+
+        <br>
+        <br>
+        <br>
+        <button class="btn btn-warning">Register</button>
+        </div>
+
+    {{ form_end(registrationForm) }}
+
+
+{% endblock %}

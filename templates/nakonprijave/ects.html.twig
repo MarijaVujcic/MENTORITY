@@ -1,0 +1,30 @@
+{% extends 'nakonprijave/welcome.html.twig' %}
+{% block title %}MENTORITY!{% endblock %}
+
+{% block body %}
+
+<form method="post">
+  <div class="container">
+    <p class="text-success">{{s}}</p>
+    <p>{{s}}</p>
+    <ul>
+      {% if predmeti != null %}
+        {% set br = 0 %}
+        {% for u in ul %}
+
+         {% for p in predmeti %}
+         {% if u.predmet.id == p.id %}
+           {% set br = br + 1 %}
+         <li>{{ p.ime }} </li>
+         {% endif %}
+         {% endfor %}
+         {% endfor %}
+         {% if br == 0 %}
+         <p> "Ne postoji takav predmet!" </p>
+         {% endif %}
+         {% endif %}
+
+     </ul>
+      </div>
+</form>
+{% endblock %}

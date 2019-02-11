@@ -1,0 +1,24 @@
+{% extends 'nakonprijave/welcome.html.twig' %}
+{% block title %}MENTORITY!{% endblock %}
+
+{% block body %}
+
+
+<form method="post" action="/dodajpredmet">
+
+  <div class="container">
+      <p class="text-success">{{s}}</p>
+    <h3> Ime kolegija : <input name='ime'style="width:50%" type="text" /></h3>
+    <hr>
+    <h5>Kod kolegija:<input name='kod' type="text" /> </h5>
+    <h5>Broj bodova: <input name='bodovi' type="text" /> </h5>
+
+    <h5>Semestar za redovne: <input name='red' type="text" v/></h5>
+    <h5>Semestar za izvanredne: <input name='izv' type="text" /></h5>
+      <h5> Izborni: <input name='izborni' type="text" > </h5>
+    <h6>Program:</h6><textarea name='program' style="width:25%"> </textarea><br>
+      <input type="submit" name="promijeni" value="Spremi promjene"class="btn btn-warning disabled"/>
+  </div>
+
+</form>
+{% endblock %}
